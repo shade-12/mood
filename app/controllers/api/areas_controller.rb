@@ -21,7 +21,7 @@ class Api::AreasController < ApplicationController
     }
   end
 
-  def destroy
+  def update
     @location = Location.find params[:id]
     @location.destroy
   end

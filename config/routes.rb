@@ -4,11 +4,20 @@ Rails.application.routes.draw do
   namespace :api do # /api/data
     get '/data', to: 'tests#index'
 
-    resources :users, only: [:create, :show, :update] do
+    resources :users, only: [:create, :show] do
       get '/getCloseFriends', to: 'users#getCloseFriends'
+      post '/updateHearts', to: 'users#updateHearts'
+      post '/updateJoyLevel', to: 'users#updateJoyLevel'
+      get '/getMonsters', to: 'users#getMonsters'
     end
 
-    resources :areas, only: [:create, :show, :destroy]
+    resources :closefriends, only: [:create, :destroy] do
+    end
+
+    resources :areas, only: [:create, :update, :destroy] do
+    end
+
+    resources :monsters, only: [:create, :update, :destroy] do
     end
 
   end
