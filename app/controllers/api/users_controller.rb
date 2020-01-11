@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
   end
 
   def getCloseFriends
-    @user = User.find params[:id]
+    @user = User.find params[:user_id]
     @closefriends = @user.closefriends
 
     render :json => {
@@ -33,24 +33,29 @@ class Api::UsersController < ApplicationController
   end
 
   def updateHearts
-    @user = User.find params[:id]
+    @user = User.find params[:user_id]
     @hearts = @user.no_of_hearts + 1
     @user.update!(no_of_hearts: @hearts)
   end
 
   def updateJoyLevel
-    @user = User.find params[:id]
+    @user = User.find params[:user_id]
     @level = @user.joy_level + 1
     @user.update!(joy_level: @level)
   end
 
-  def getMonster
-    @user = User.find params[:id]
+  def getMonsters
+    @user = User.find params[:user_id]
     @monster = @user.monsters
 
     render :json => {
       monsters: @monsters
     }
+  end
+
+  def updateArea
+    @user = User.find params[:user_id]
+    @user.update!(area_id: Area.find(params[:area_id]))
   end
 
 end

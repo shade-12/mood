@@ -1,21 +1,30 @@
-class Api::ClosefriendsController < ApplicationController
+class Api::MonstersController < ApplicationController
 
   def create
-    @closefriend = Closefriend.find_or_create_by(
-      user_id_1: params[:user_id_1],
-      user_id_2: params[:user_id_2]
+    @monster = Monster.find_or_create_by(
+      name: params[:name],
+      task: params[:task],
+      image_id: params[:image_id],
+      user_id: params[:user_id],
+      area_id: params[:area_id],
+      done: false
     )
 
-    if @closefriend.save
+    if @monster.save
       render :json => {
-        closefriend: @closefriend
+        monster: @monster
       }
     end
   end
 
+  def update
+    @monster = Monster.find params[:id]
+    @monster.update!(done: true)
+  end
+
   def destroy
-    @closefriend = Closefriend.find params[:id]
-    @closefriend.destroy
+    @monster = Monster.find params[:id]
+    @monster.destroy
   end
 
 end

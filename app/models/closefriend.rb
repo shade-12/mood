@@ -1,3 +1,5 @@
 class Closefriend < ApplicationRecord
-  has_many :users
+  validates_associated :user
+  validates_presence_of :user
+  belongs_to :user
 end

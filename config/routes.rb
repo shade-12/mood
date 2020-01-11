@@ -9,12 +9,13 @@ Rails.application.routes.draw do
       post '/updateHearts', to: 'users#updateHearts'
       post '/updateJoyLevel', to: 'users#updateJoyLevel'
       get '/getMonsters', to: 'users#getMonsters'
+      post '/updateArea', to: 'users#updateArea'
     end
 
     resources :closefriends, only: [:create, :destroy] do
     end
 
-    resources :areas, only: [:create, :update, :destroy] do
+    resources :areas, only: [:create, :destroy] do
     end
 
     resources :monsters, only: [:create, :update, :destroy] do
