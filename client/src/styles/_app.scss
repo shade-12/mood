@@ -1,0 +1,22 @@
+body {
+  text-align: center;
+  color: $purple;
+  font-family: 'Montserrat', sans-serif;
+  background-color: $background-color;
+}
+
+div.thumbnail-container {
+  display: flex;
+  flex-direction :row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 600px) {
+  img.thumbnail {
+    width: 48vw;
+    margin: 0.8vw;
+    padding: 5px;
+    border: 1px solid $neon-green;
+  }
+}
