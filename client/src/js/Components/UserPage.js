@@ -79,26 +79,26 @@ class UserPage extends React.Component{
               </div>
             </section>
 
-            <PopUp closefriends={this.state.close_friends}></PopUp>
+            <PopUp closefriends={this.state.close_friends} currentuser={this.state.current_user}></PopUp>
 
             <Carousel>
-              <Carousel.Item class = "carouselItem">
+              <Carousel.Item className = "carouselItem">
                 <Link to='/fight'>
                   <img src = {m1}/>
                 </Link>
                 <Carousel.Caption>
-                  <div class = "dino-text">
+                  <div className = "dino-text">
                   <h3>Dino-ster</h3>
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>
 
-              <Carousel.Item class = "carouselItem">
+              <Carousel.Item className = "carouselItem">
                 <Link to='/fight'>
                   <img src = {m2}/>
                 </Link>
                 <Carousel.Caption>
-                  <div class = "dino-text">
+                  <div className = "dino-text">
                   <h3>Fat-bean</h3>
                   </div>
                 </Carousel.Caption>
@@ -109,7 +109,7 @@ class UserPage extends React.Component{
                   <img src = {m3}/>
                 </Link>
                 <Carousel.Caption>
-                  <div class = "dino-text">
+                  <div className = "dino-text">
                     <h3>Fluff-ball</h3>
                   </div>
                 </Carousel.Caption>
@@ -120,7 +120,7 @@ class UserPage extends React.Component{
                   <img src = {m4}/>
                 </Link>
                 <Carousel.Caption>
-                  <div class = "dino-text">
+                  <div className = "dino-text">
                     <h3>Mad-alien</h3>
                   </div>
                 </Carousel.Caption>
@@ -131,7 +131,7 @@ class UserPage extends React.Component{
                   <img src = {m5}/>
                 </Link>
                 <Carousel.Caption>
-                  <div class = "dino-text">
+                  <div className = "dino-text">
                     <h3>Stitch</h3>
                   </div>
                 </Carousel.Caption>
@@ -142,7 +142,7 @@ class UserPage extends React.Component{
                   <img src = {m6}/>
                 </Link>
                 <Carousel.Caption>
-                  <div class = "dino-text">
+                  <div className = "dino-text">
                     <h3>Big-bird</h3>
                   </div>
                 </Carousel.Caption>

@@ -2,9 +2,10 @@ import React, { useState, Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
+import axios from 'axios';
 
 class PopUp extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class PopUp extends Component {
     this.state = {
       show1: false,
       show2: false,
-      show3: false
+      show3: false,
+      friend_name: ''
     }
   }
 
@@ -23,14 +25,29 @@ class PopUp extends Component {
   handle3Close = () => {this.setState({show3: false})};
   handle3Show = () => {this.setState({show3: true})};
 
-  addFriend = () => {
-    axios.post('')
+  addFriend = (e) => {
+    let username = this.state.friend_name;
+
+      // let id = r.data.user.id;
+      let user = {user_id: this.props.currentuser.id,
+                  user_id_2: username};
+      axios.post('/api/closefriends', user).then(
+        response => { console.log("Added!")
+      }).catch(error => {
+            console.log(error);
+          });
+
+
+  }
+
+  onChange = e => {
+      this.setState({ friend_name: e.target.value });
   }
 
   render() {
 
     const closefriends = this.props.closefriends.map(f => (
-      <ListGroup.Item>{f.name}</ListGroup.Item>
+      <ListGroup.Item key={f.id}>{f.name}</ListGroup.Item>
     ));
 
     return (
@@ -48,17 +65,19 @@ class PopUp extends Component {
               {closefriends}
             </ListGroup>
           </Modal.Body>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-sm">Add a close friend</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
-          </InputGroup>
+          <Form onSubmit={this.addFriend}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Control type="text" placeholder="My friend" onChange={this.onChange}/>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Add!
+            </Button>
+          </Form>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handle1Close}>
               Close
             </Button>
-            <Button variant="primary" onClick={this.addFriends}>
+            <Button variant="primary" type="submit">
               Add Friend
             </Button>
           </Modal.Footer>

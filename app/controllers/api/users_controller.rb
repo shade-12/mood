@@ -23,6 +23,13 @@ class Api::UsersController < ApplicationController
     }
   end
 
+  def getUser
+    @user = User.find_by params[:name]
+    render :json => {
+      user: @user
+    }
+  end
+
   def getCloseFriends
     @user = User.find params[:user_id]
     @closefriendids = @user.closefriends

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :api do # /api/data
     get '/data', to: 'tests#index'
 
+    get '/users/:name', to:'users#getUser'
+
     resources :users, only: [:create, :show] do
       get '/getCloseFriends', to: 'users#getCloseFriends'
       post '/updateHearts', to: 'users#updateHearts'
