@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import '../../styles/fight.scss'
 
 import { Link } from 'react-router-dom';
 
@@ -15,21 +14,21 @@ import m6 from '../../images/monster6.png';
 class Fight extends React.Component{
 
   state = { theme: null }
-  
+
   chooseTheme = (theme, evt) => {
     evt.preventDefault();
     if (theme.toLowerCase() === 'reset') { theme = null }
     this.setState({ theme });
   }
-  
+
   randomTask() {
-    const messages = ["Enter a word describing your current mood", 
-                      "Think of something positive about yourself", 
-                      "Write down something you are grateful for", 
-                      "Write down the one thing you want to focus most on now", 
-                      "Go outside and get some excersize and briefly describe what you did and how it felt", 
-                      "Eat a healthy meal and describe what you ate and how it felt", 
-                      "Do something for someone else and describe what you did and how it felt", 
+    const messages = ["Enter a word describing your current mood",
+                      "Think of something positive about yourself",
+                      "Write down something you are grateful for",
+                      "Write down the one thing you want to focus most on now",
+                      "Go outside and get some excersize and briefly describe what you did and how it felt",
+                      "Eat a healthy meal and describe what you ate and how it felt",
+                      "Do something for someone else and describe what you did and how it felt",
                       "Go to bed on time and describe what time you fell asleep and how you felt in the morning"];
     const random = Math.ceil((Math.random()*messages.length)) - 1;
     return messages[random];
@@ -41,17 +40,17 @@ class Fight extends React.Component{
   }
 
   render() {
-  
+
     const { theme } = this.state;
     const themeClass = theme ? theme.toLowerCase() : 'default';
-    
+
     const parentContainerStyles = {
       position: 'absolute',
       height: '100%',
       width: '100%',
       display: 'table'
     };
-    
+
     const subContainerStyles = {
       position: 'relative',
       height: '100%',
@@ -63,8 +62,8 @@ class Fight extends React.Component{
     const imageClick = (mood) => {
       console.log(mood);
       this.setState({current_mood: mood});
-    } 
-    
+    }
+
     return (
       <Form>
         <Form.Group controlId="formBasicEmail">
@@ -81,7 +80,7 @@ class Fight extends React.Component{
       </Form>
     );
   }
-  
+
 }
 
 export default Fight;
