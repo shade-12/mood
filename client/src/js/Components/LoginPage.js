@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -38,19 +39,20 @@ class LoginPage extends Component {
   }
 
   onSubmit = response => {
-
     let user = {
-                name: this.state.username,
-                password: this.state.password,
-                area_id: this.state.area.id
-              };
+      name: this.state.username,
+      password: this.state.password,
+      area_id: this.state.area.id
+    };
 
     axios.post('/api/users', user)
          .then(response => {
-          this.setState({
-            current_user: response.data.user,
-            logged_in: true
-          });
+            this.setState({
+              current_user: response.data.user,
+              logged_in: true
+            });
+            const cookies = new Cookies();
+            cookies.set('mood_user', response.data.user.id, { path: '/', expires: 0 });
           })
          .catch(error => {
             console.log(error);
@@ -72,7 +74,7 @@ class LoginPage extends Component {
 
   render() {
     if(this.state.logged_in) {
-      return <Redirect to={`/users/${this.state.current_user.id}`} />
+      return <Redirect to={`/users/1`} />
     }
 
     return (
