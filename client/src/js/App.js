@@ -6,6 +6,7 @@ import axios from 'axios';
 import NavBar from './Components/_navbar.js';
 import LoginPage from './Components/LoginPage.js';
 import MyMood from './Components/MyMood.js';
+import Fight from './Components/Fight.js';
 
 class App extends Component {
   // static propTypes = {
