@@ -67,13 +67,14 @@ class Fight extends React.Component{
     return (
       <Form className="fight">
         <Form.Group controlId="formBasicEmail">
+          <br></br>
           <Form.Label>Complete the task to defeat the monster!</Form.Label>
-          <img className="thumbnail" src={m2} onClick={() => imageClick('m2')}/>
+          <img src={m2} onClick={() => imageClick('m2')}/>
           <div className="randomTask" > { this.randomTask() } </div>
           <Form.Control/>
         </Form.Group>
         <Link to='/mymood'>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" class = "button">
             Submit
           </Button>
         </Link>

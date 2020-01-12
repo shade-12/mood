@@ -1,7 +1,9 @@
 .fight {
-    label {
+    .form-label {
     display: block;
-    margin-bottom: 0.5rem;
+   
+    font-size: 40px;
+    margin: 10px 60px 20px 60px;
   }
 
   img {
@@ -11,7 +13,17 @@
   }
 
   .randomTask {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 10px 60px 20px 60px;
+  }
+
+  .form-control{
+    width: 60%;
+  }
+  .btn-primary{
+    border-radius: 20px;
+    background-color: $bright-purple;
+    border: none;
   }
 }
+
+
