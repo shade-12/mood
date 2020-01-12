@@ -4,6 +4,7 @@ import Cookies from 'universal-cookie';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import Banner from './_banner.js';
 
 class LoginPage extends Component {
 
@@ -80,6 +81,7 @@ class LoginPage extends Component {
     return (
       <div className="login">
         <h2>Welcome to M∞d :|</h2>
+        <Banner />
         <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Control type="text" placeholder="Username" onChange={this.onChange}/>
