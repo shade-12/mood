@@ -51,6 +51,15 @@ class UserPage extends React.Component{
     );
   }
 
+  getDefeatedMonster = (user_id) => {
+    axios.get(`/api/users/${user_id}/getCloseFriends`).then(
+      response => {
+        this.setState({close_friends: response.data.closefriends});
+        console.log(response.data.closefriends);
+      }
+    );
+  }
+
   render() {
     const { name, no_of_hearts, joy_level } = this.state.current_user;
 
@@ -79,7 +88,7 @@ class UserPage extends React.Component{
               </div>
             </section>
 
-            <PopUp closefriends={this.state.close_friends} currentuser={this.state.current_user}></PopUp>
+            <PopUp closefriends={this.state.close_friends} currentuser={this.state.current_user} getCloseFriends={this.getCloseFriends}></PopUp>
 
             <Carousel>
               <Carousel.Item className = "carouselItem">
