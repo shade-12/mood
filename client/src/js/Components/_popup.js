@@ -25,18 +25,19 @@ class PopUp extends Component {
   handle3Close = () => {this.setState({show3: false})};
   handle3Show = () => {this.setState({show3: true})};
 
-  addFriend = (e) => {
+  addFriend = async (e) => {
+    e.preventDefault();
     let username = this.state.friend_name;
-
-      // let id = r.data.user.id;
-      let user = {user_id: this.props.currentuser.id,
-                  user_id_2: username};
-      axios.post('/api/closefriends', user).then(
-        response => { console.log("Added!")
-      }).catch(error => {
-            console.log(error);
-          });
-
+    await axios.get(`/api/users/name/${username}`).then(r => {
+            let id = r.data.user.id;
+            let user = {user_id: this.props.currentuser.id,
+                        user_id_2: id};
+            axios.post('/api/closefriends', user).then(
+              response => { console.log("Added!")
+            }).catch(error => {
+                  console.log(error);
+                });
+    })
 
   }
 

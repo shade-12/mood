@@ -48,7 +48,7 @@ class MoodEnterPage extends Component {
                 <h1>How are you feeling?</h1>
                 <br /><br /><br /><br /><br /><br />
                 <Form onSubmit={this.onSubmit}>
-                    <Form.Group controlID="formMood">
+                    <Form.Group controlid="formMood">
                         <Form.Control type="text" placeholder="" onChange={this.onChange} />
                     </Form.Group>
                     <Button variant="primary" type="submit">Submit</Button>

@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
   end
 
   def getUser
-    @user = User.find_by params[:name]
+    @user = User.find_by_name(params[:name])
     render :json => {
       user: @user
     }
