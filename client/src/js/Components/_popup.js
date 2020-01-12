@@ -33,7 +33,9 @@ class PopUp extends Component {
             let user = {user_id: this.props.currentuser.id,
                         user_id_2: id};
             axios.post('/api/closefriends', user).then(
-              response => { console.log("Added!")
+              response => {
+                this.props.getCloseFriends(this.props.currentuser.id);
+                console.log("Added!")
             }).catch(error => {
                   console.log(error);
                 });

@@ -1,12 +1,14 @@
 .user-container {
   display: flex;
   flex-direction: column;
+  margin-top: -3vh;
 }
 
 .user-card {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-bottom: 10px;
 
   .avatar-container {
     .avatar {
@@ -18,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 30vw;
 
     span {
@@ -33,7 +35,7 @@
       }
 
       img {
-        height: 3vh;
+        height: 3.5vh;
         float: left;
         margin-right: 5px;
       }

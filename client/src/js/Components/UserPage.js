@@ -79,7 +79,7 @@ class UserPage extends React.Component{
               </div>
             </section>
 
-            <PopUp closefriends={this.state.close_friends} currentuser={this.state.current_user}></PopUp>
+            <PopUp closefriends={this.state.close_friends} currentuser={this.state.current_user} getCloseFriends={this.getCloseFriends}></PopUp>
 
             <Carousel>
               <Carousel.Item className = "carouselItem">
