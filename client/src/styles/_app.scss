@@ -2,7 +2,8 @@ body {
   text-align: center;
   font-family: 'Schoolbell', cursive;
   color: $dark-purple;
-  background-color: $background-color;
+  background: rgb(206,174,238);
+  background: linear-gradient(90deg, rgba(206,174,238,0.5256477591036415) 0%, rgba(148,232,233,0.5088410364145659) 75%);
 }
 
 

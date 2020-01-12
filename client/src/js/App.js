@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import { instanceOf } from 'prop-types';
+// import { instanceOf } from 'prop-types';
+import { withCookies } from 'react-cookie';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import NavBar from './Components/_navbar.js';
 import LoginPage from './Components/LoginPage.js';
 import MyMood from './Components/MyMood.js';
-import Fight from './Components/Fight.js';
 
 class App extends Component {
-  // static propTypes = {
-  //   cookies: instanceOf(Cookies).isRequired
-  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {}
+    }
+  }
+
+  async componentDidMount() {
+    const cookies = new Cookies();
+    cookies.set('mood_user', '', { path: '/', expires: 0 });
+    this.setState({user: cookies.get('mood_user')});
+  }
 
   render() {
     let login = null;
-    const cookies = new Cookies();
-    if(cookies.get('mood_user')){
-      login = <Route render={() => <Redirect to={`/users/${cookies.get('mood_user')}`} />} />;
-    } else{
+    if(this.state.user !== ''){
+      login = <Route render={() => <Redirect to={`/users/${this.state.user.id}`} />} />;
+    }else{
       login = <Route render={() => <Redirect to="/" />} />;
     }
 
@@ -27,15 +35,15 @@ class App extends Component {
         <div className="App">
             <Route
               exact path="/"
-              render={() => <LoginPage cookies={cookies} />}
+              render={() => <LoginPage user={this.state.user} />}
             />
             <Route
               exact path="/mood"
-              render={() => <MyMood cookies={cookies} />}
+              render={() => <MyMood user={this.state.user} />}
             />
             {/*<Route
               exact path="/users/:id"
-              render={() => <UserPage cookies={cookies}/>}
+              render={() => <UserPage cookies={this.props.cookies}/>}
             />*/}
             {login}
         </div>
@@ -44,4 +52,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withCookies(App);

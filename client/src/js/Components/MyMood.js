@@ -49,11 +49,11 @@ class MyMood extends React.Component{
             </Dropdown>
           </div>
 
-        <section class="container">
-          <div class="one">
+        <section className="container">
+          <div className="one">
             <Image src={userIcon} roundedCircle id = "userIcon"/>
           </div>
-          <div class="two">
+          <div className="two">
            <h4> UserName</h4>
            <h5> Heart</h5>
            <h5> Level</h5>
@@ -100,12 +100,12 @@ class MyMood extends React.Component{
 </Dropdown>
 
 <Carousel>
-  <Carousel.Item class = "carouselItem">
+  <Carousel.Item className = "carouselItem">
     <img src = {m1}/>
 
 
     <Carousel.Caption>
-      <div class = "dino-text">
+      <div className = "dino-text">
       <h3>Dino-ster</h3>
       </div>
     </Carousel.Caption>

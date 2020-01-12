@@ -9,11 +9,12 @@ class LoginPage extends Component {
 
   constructor(props) {
     super(props);
+    const cookies = new Cookies();
     this.state = {
       username: '',
       password: '',
       area: {},
-      current_user: {},
+      current_user: cookies.get('mood_user'),
       logged_in: false
     };
   }
@@ -51,7 +52,6 @@ class LoginPage extends Component {
               current_user: response.data.user,
               logged_in: true
             });
-            const cookies = new Cookies();
             cookies.set('mood_user', response.data.user.id, { path: '/', expires: 0 });
           })
          .catch(error => {
@@ -74,7 +74,7 @@ class LoginPage extends Component {
 
   render() {
     if(this.state.logged_in) {
-      return <Redirect to={`/users/1`} />
+      return <Redirect to={`/users/${this.state.current_user.id}`} />
     }
 
     return (
