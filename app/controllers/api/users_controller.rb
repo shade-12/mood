@@ -59,9 +59,20 @@ class Api::UsersController < ApplicationController
   def getMonsters
     @user = User.find params[:user_id]
     @monster = @user.monsters
+    @done = Array.new
+    @current = Array.new
+
+    @monster.each do |mons|
+      if mons.done
+        @done << mons
+      else
+        @current << mons
+      end
+    end
 
     render :json => {
-      monsters: @monsters
+      done: @done,
+      current: @current
     }
   end
 

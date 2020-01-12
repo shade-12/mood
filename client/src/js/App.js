@@ -37,7 +37,7 @@ class App extends Component {
             />
             <Route
               exact path="/mood"
-              render={() => <MoodEnterPage cookies={this.props.cookies} />}
+              render={() => <Fight cookies={this.props.cookies} />}
             />
             {<Route
               exact path="/users/:id"

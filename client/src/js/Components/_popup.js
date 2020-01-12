@@ -53,6 +53,10 @@ class PopUp extends Component {
       <ListGroup.Item key={f.id}>{f.name}</ListGroup.Item>
     ));
 
+    const defeatedmonsters = this.props.defeatedmonsters.map(m => (
+      <ListGroup.Item key={m.id}>{m.name}</ListGroup.Item>
+    ));
+
     return (
       <>
         <Button className="modal-button" variant="secondary" onClick={this.handle1Show}>
@@ -117,11 +121,7 @@ class PopUp extends Component {
           </Modal.Header>
           <Modal.Body>
             <ListGroup variant="flush">
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+              {defeatedmonsters}
             </ListGroup>
           </Modal.Body>
           <Modal.Footer>

@@ -13,14 +13,6 @@ import m6 from '../../images/monster6.png';
 
 class Fight extends React.Component{
 
-  state = { theme: null }
-
-  chooseTheme = (theme, evt) => {
-    evt.preventDefault();
-    if (theme.toLowerCase() === 'reset') { theme = null }
-    this.setState({ theme });
-  }
-
   randomTask() {
     const messages = ["Enter a word describing your current mood",
                       "Think of something positive about yourself",
@@ -40,24 +32,6 @@ class Fight extends React.Component{
   }
 
   render() {
-
-    const { theme } = this.state;
-    const themeClass = theme ? theme.toLowerCase() : 'default';
-
-    const parentContainerStyles = {
-      position: 'absolute',
-      height: '100%',
-      width: '100%',
-      display: 'table'
-    };
-
-    const subContainerStyles = {
-      position: 'relative',
-      height: '100%',
-      width: '100%',
-      display: 'table-cell',
-      verticalAlign: 'middle'
-    };
 
     const imageClick = (mood) => {
       console.log(mood);
