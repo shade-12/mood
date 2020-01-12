@@ -26,8 +26,9 @@ class MoodEnterPage extends Component {
     render() {
         return (
             <div className="MoodEnter">
-                <h1>How are you feeling?</h1>
-                <br /><br /><br /><br /><br /><br />
+                <br></br><br /><br /><br /><br /><br />
+                <h2>How are you feeling today?</h2>
+                <br /><br />
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group controlID="formMood">
                         <Form.Control type="text" placeholder="" onChange={this.onChange} />

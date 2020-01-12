@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavBar from './Components/_navbar.js';
+import MoodEnterPage from './Components/MoodEnterPage.js'
 
 var angry = require('../images/angry.jpg');
 var confused = require('../images/confused.jpg');
@@ -40,16 +41,7 @@ class App extends Component {
       <div className="App">
         <NavBar/>
         <div className="thumbnail-container">
-          <img className="thumbnail" src={angry} />
-          <img className="thumbnail" src={confused} />
-          <img className="thumbnail" src={crying} />
-          <img className="thumbnail" src={depressed} />
-          <img className="thumbnail" src={happy} />
-          <img className="thumbnail" src={impatient} />
-          <img className="thumbnail" src={naughty} />
-          <img className="thumbnail" src={sleepy} />
-          <img className="thumbnail" src={smile} />
-          <img className="thumbnail" src={terrified} />
+          <MoodEnterPage />
         </div>
       </div>
     );
