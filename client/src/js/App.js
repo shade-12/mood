@@ -4,6 +4,7 @@ import NavBar from './Components/_navbar.js';
 import LoginPage from './Components/LoginPage.js';
 import MyMood from './Components/MyMood.js';
 import ReactDOM from 'react-dom';
+import Fight from './Components/Fight.js';
 
 
 class App extends Component {
@@ -37,7 +38,7 @@ class App extends Component {
       <div className="App">
         <NavBar/>
         <div className="box-container">
-          <MyMood/>
+          <Fight/>
        </div>
 
         {/* <div className="thumbnail-container">
