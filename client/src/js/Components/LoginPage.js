@@ -76,6 +76,8 @@ class LoginPage extends Component {
     }
 
     return (
+      <>
+      <h2>Login :|</h2>
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Control type="text" placeholder="Username" onChange={this.onChange}/>
@@ -88,6 +90,7 @@ class LoginPage extends Component {
           Submit
         </Button>
       </Form>
+      </>
     );
   }
 

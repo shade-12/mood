@@ -8,8 +8,6 @@ import sleepy from '../../images/sleepy.jpg';
 
 class MyMood extends React.Component{
 
-  state = { theme: null }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -17,19 +15,11 @@ class MyMood extends React.Component{
     };
   }
 
-  chooseTheme = (theme, evt) => {
-    evt.preventDefault();
-    if (theme.toLowerCase() === 'reset') { theme = null }
-    this.setState({ theme });
-  }
-
   render() {
 
     const imageClick = (mood) => {
-      console.log(mood);
       this.setState({current_mood: mood});
     }
-
 
     return (
         <div>
