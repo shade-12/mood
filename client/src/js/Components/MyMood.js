@@ -23,7 +23,11 @@ import m4 from '../../images/monster4.png';
 import m5 from '../../images/monster5.png';
 import m6 from '../../images/monster6.png';
 
+var friendList = [];
+
 class MyMood extends React.Component{
+
+  
 
   state = { theme: null }
 
@@ -139,6 +143,10 @@ class MyMood extends React.Component{
   }
 }
 
+function storeFriends() {
+  friendList.push(document.getElementById("basic-addon1").value);
+}
+
 function Menu() {
 
   const [show2, setShow2] = useState(false);
@@ -167,6 +175,7 @@ function Menu() {
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
                     <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                    <storeFriends></storeFriends>
                   </InputGroup.Prepend>
                   <FormControl
                     placeholder="Username"
@@ -231,7 +240,7 @@ function PopUp() {
         </Modal.Header>
         <Modal.Body>
           <ListGroup variant="flush">
-            <ListGroup.Item>Cras justo odio</ListGroup.Item>
+            <ListGroup.Item>friendList[0]</ListGroup.Item>
             <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
             <ListGroup.Item>Morbi leo risus</ListGroup.Item>
             <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>

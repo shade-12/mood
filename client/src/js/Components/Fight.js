@@ -74,8 +74,11 @@ class Fight extends React.Component{
           <Form.Control/>
         </Form.Group>
         <Link to='/mymood'>
-          <Button variant="primary" type="submit">
+          <Button className="fight-buttons" variant="primary" type="submit">
             Submit
+          </Button>
+          <Button className="fight-buttons" variant="primary" type="pass">
+            Pass
           </Button>
         </Link>
       </Form>
