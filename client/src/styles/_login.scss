@@ -1,5 +1,13 @@
 .form-control{
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25vh;
+  margin-bottom: 20vh;
 }
