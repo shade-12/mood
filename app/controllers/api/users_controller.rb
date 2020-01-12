@@ -25,7 +25,12 @@ class Api::UsersController < ApplicationController
 
   def getCloseFriends
     @user = User.find params[:user_id]
-    @closefriends = @user.closefriends
+    @closefriendids = @user.closefriends
+    @closefriends = Array.new
+
+    @closefriendids.each do |friend|
+      @closefriends << User.find(friend.user_id_2)
+    end
 
     render :json => {
       closefriends: @closefriends
