@@ -1,16 +1,10 @@
 body {
   text-align: center;
-  color: $purple;
+  color: $dark-purple;
   font-family: 'Montserrat', sans-serif;
   background-color: $background-color;
 }
 
-div.thumbnail-container {
-  display: flex;
-  flex-direction :row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
 
 @media screen and (max-width: 600px) {
   img.thumbnail {
@@ -20,4 +14,88 @@ div.thumbnail-container {
     //border: 1px solid $neon-green;
     border-radius: 25px;
   }
+}
+
+h2 {
+  text-align: left;
+}
+
+#user-info{
+  text-align: left;
+}
+
+#userIcon{
+  max-width: 100px;
+}
+
+* {box-sizing:border-box}
+
+.container {
+  width: 100%; /* Full width */
+}
+
+.skills {
+  text-align: right; /* Right-align text */
+  padding-top: 10px; /* Add top padding */
+  padding-bottom: 10px; /* Add bottom padding */
+  color: white; /* White text color */
+}
+
+div.thumbnail-container {
+  display: flex;
+  flex-direction :row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.container {
+  width: 80%;
+  height: 100px;
+  //background: aqua;
+  margin: auto;
+  padding: 5px;
+}
+.one {
+  width: 40%;
+  height: 100px;
+  //background: red;
+  float: left;
+}
+.two {
+  margin-left: 15%;
+  height: 100px;
+  //background: black;
+  text-align: left;
+}
+
+#dots {
+  width: 30px;
+  height: 40px;
+  background-image: radial-gradient(circle at center, black 1.5px, transparent 1px);
+  background-size: 20px 12px;
+  background-color: $background-color;
+  margin-right: 30px;
+}
+
+#dotsdiv{
+ 
+  text-align: right;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+.carouselItem{
+  text-align: center;
+}
+.monster{
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.carousel-caption{
+  margin-top: 100px;
+  display: block;
 }

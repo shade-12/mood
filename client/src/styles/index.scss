@@ -1,10 +1,11 @@
-$orange: #FCAA67;
+$orange: #ff9933;
 $gray: #ABA9BF;
 $yellow: #FFFFC7;
 $purple: #BEB7DF;
 $green: #D4F2D2;
 $bright-purple: #8F00FF;
-$background-color: #301934;
+$dark-purple: #5900b3;
+$background-color: #c6ecd9;
 $neon-blue: #08F7FE;
 $neon-green: #09FBD3;
 $neon-pink: #FE53B8;
@@ -18,3 +19,4 @@ $neon-yellow: #FFF857;
 @import "app";
 @import "navbar";
 @import "login";
+@import "mood";
