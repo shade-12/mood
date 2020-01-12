@@ -7,8 +7,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-import '../../styles/mymood.scss';
-
 import {ButtonToolbar} from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
@@ -39,15 +37,15 @@ class MyMood extends React.Component{
     if (theme.toLowerCase() === 'reset') { theme = null }
     this.setState({ theme });
   }
-  
-  
+
+
   render() {
 
     const imageClick = (mood) => {
       console.log(mood);
       this.setState({current_mood: mood});
-    } 
-    
+    }
+
     return (
       <div>
         <Menu></Menu>
@@ -132,7 +130,7 @@ class MyMood extends React.Component{
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-     
+
         <h1>{this.state.current_mood}</h1>
       </div>
     );
@@ -148,7 +146,7 @@ function Menu() {
   const handle2Show = () => setShow2(true);
   const handle3Close = () => setShow3(false);
   const handle3Show = () => setShow3(true);
-  
+
   return (
     <div>
       <div id = "dotsdiv">

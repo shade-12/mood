@@ -7,6 +7,7 @@ import NavBar from './Components/_navbar.js';
 import LoginPage from './Components/LoginPage.js';
 import UserPage from './Components/UserPage.js';
 import Fight from './Components/Fight.js';
+import MyMood from './Components/MyMood.js';
 
 class App extends Component {
   static propTypes = {
@@ -40,7 +41,7 @@ class App extends Component {
             />
             {<Route
               exact path="/users/:id"
-              render={() => <Fight cookies={this.props.cookies}/>}
+              render={() => <MyMood cookies={this.props.cookies}/>}
             />}
             {login}
           </Switch>
