@@ -38,7 +38,7 @@ class App extends Component {
       <div className="App">
         <NavBar/>
         <div className="box-container">
-          <Fight/>
+          <MyMood/>
        </div>
 
         {/* <div className="thumbnail-container">
@@ -58,5 +58,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;

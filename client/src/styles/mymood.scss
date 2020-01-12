@@ -1,0 +1,14 @@
+.modal-button {
+  display: block !important;
+  margin: auto;
+  margin-bottom: 10px;
+  background-color: mediumslateblue;
+  width: 200px;
+}
+
+.btn-secondary:focus, .btn-secondary.focus {
+  color: #fff;
+  background-color: mediumslateblue;
+  border-color: mediumslateblue;
+  box-shadow: none;
+}

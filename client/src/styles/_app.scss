@@ -71,10 +71,11 @@ div.thumbnail-container {
 #dots {
   width: 30px;
   height: 40px;
-  background-image: radial-gradient(circle at center, black 1.5px, transparent 1px);
+  background-image: radial-gradient(circle at center, #6AAFB2 1.5px, transparent 0px);
   background-size: 20px 12px;
   background-color: $background-color;
   margin-right: 30px;
+  margin-top: -100px;
 }
 
 #dotsdiv{
@@ -98,4 +99,18 @@ div.thumbnail-container {
 .carousel-caption{
   margin-top: 100px;
   display: block;
+}
+
+.modal-button {
+  color: green($color: #491a1a);
+  background-color: green($color: #752b2b);
+  vertical-align: middle;
+}
+
+.btn-primary {
+  //background-color: gray;
+  outline: none;
+  border: none;
+  //display: block;
+  vertical-align: middle;
 }

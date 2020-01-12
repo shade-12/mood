@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Carousel from 'react-bootstrap/Carousel'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
+
+import '../../styles/mymood.scss';
 
 import {ButtonToolbar} from 'react-bootstrap';
 
@@ -18,6 +21,9 @@ import userIcon from '../../images/sword.jpg';
 import m1 from '../../images/monster1.png';
 import m2 from '../../images/monster2.png';
 import m3 from '../../images/monster3.png';
+import m4 from '../../images/monster4.png';
+import m5 from '../../images/monster5.png';
+import m6 from '../../images/monster6.png';
 
 class MyMood extends React.Component{
 
@@ -27,7 +33,6 @@ class MyMood extends React.Component{
     super(props);
     this.state = {
       current_mood: '',
-    
     };
   }
 
@@ -39,29 +44,26 @@ class MyMood extends React.Component{
   
   
   render() {
-  
+
     const imageClick = (mood) => {
       console.log(mood);
       this.setState({current_mood: mood});
     } 
-
-  
     
-
     return (
-        <div>
-          <div id = "dotsdiv">
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dots">
-              </Dropdown.Toggle>
+      <div>
+        <div id = "dotsdiv">
+          <Dropdown>
+            <Dropdown.Toggle variant="success" id="dots">
+            </Dropdown.Toggle>
 
-             <Dropdown.Menu>
-               <Dropdown.Item href="#/action-1" >Create Monster </Dropdown.Item>
-               <Dropdown.Item href="#/action-2">Add Friend</Dropdown.Item>
-              <Dropdown.Item href="#/action-3"> Add Hobbies</Dropdown.Item>
-             </Dropdown.Menu>
-            </Dropdown>
-          </div>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1" >Create Monster </Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Add Friend</Dropdown.Item>
+            <Dropdown.Item href="#/action-3"> Add Hobbies</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
 
         <section class="container">
           <div class="one">
@@ -74,78 +76,61 @@ class MyMood extends React.Component{
           </div>
         </section>
         <br></br>
-<Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Close Friends
-  </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
-
-<br></br>
-<Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Hobbies
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
-
-<br></br>
-
-<Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Monsters Defeated
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
+<PopUp></PopUp>
 
 <Carousel>
   <Carousel.Item class = "carouselItem">
     <img src = {m1}/>
-
-    
     <Carousel.Caption>
       <div class = "dino-text">
       <h3>Dino-ster</h3>
       </div>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=Second slide&bg=282c34"
-      alt="Third slide"
-    />
 
+  <Carousel.Item class = "carouselItem">
+    <img src = {m2}/>
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <div class = "dino-text">
+      <h3>Fat-bean</h3>
+      </div>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=Third slide&bg=20232a"
-      alt="Third slide"
-    />
 
+  <Carousel.Item>
+    <img src = {m3}/>
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <div class = "dino-text">
+        <h3>Fluff-ball</h3>
+      </div>
+    </Carousel.Caption>
+  </Carousel.Item>
+
+  <Carousel.Item>
+    <img src = {m4}/>
+    <Carousel.Caption>
+      <div class = "dino-text">
+        <h3>Mad-alien</h3>
+      </div>
+    </Carousel.Caption>
+  </Carousel.Item>
+
+  <Carousel.Item>
+    <img src = {m5}/>
+    <Carousel.Caption>
+      <div class = "dino-text">
+        <h3>Stitch</h3>
+      </div>
+    </Carousel.Caption>
+  </Carousel.Item>
+
+  <Carousel.Item>
+    <img src = {m6}/>
+    <Carousel.Caption>
+      <div class = "dino-text">
+        <h3>Big-bird</h3>
+      </div>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
@@ -175,5 +160,95 @@ class MyMood extends React.Component{
     );
   }
 }
+
+function PopUp() {
+  const [show1, setShow1] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
+
+  const handle1Close = () => setShow1(false);
+  const handle1Show = () => setShow1(true);
+  const handle2Close = () => setShow2(false);
+  const handle2Show = () => setShow2(true);
+  const handle3Close = () => setShow3(false);
+  const handle3Show = () => setShow3(true);
+
+  return (
+    <>
+      <Button className="modal-button" variant="secondary" onClick={handle1Show}>
+        Close Friends
+      </Button>
+
+      <Modal show={show1} onHide={handle1Close}>
+        <Modal.Header closeButton>
+          <Modal.Title>Close Friends</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ListGroup variant="flush">
+            <ListGroup.Item>Cras justo odio</ListGroup.Item>
+            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+          </ListGroup>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handle1Close}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Button className="modal-button" variant="secondary" onClick={handle2Show}>
+        Hobbies
+      </Button>
+
+      <Modal show={show2} onHide={handle2Close}>
+        <Modal.Header closeButton>
+          <Modal.Title>Hobbies</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ListGroup variant="flush">
+            <ListGroup.Item>Cras justo odio</ListGroup.Item>
+            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+          </ListGroup>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handle2Close}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Button className="modal-button" variant="secondary" onClick={handle3Show}>
+        Monsters Defeated
+      </Button>
+
+      <Modal show={show3} onHide={handle3Close}>
+        <Modal.Header closeButton>
+          <Modal.Title>Monsters Defeated</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ListGroup variant="flush">
+            <ListGroup.Item>Cras justo odio</ListGroup.Item>
+            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+          </ListGroup>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handle3Close}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+
 
 export default MyMood;

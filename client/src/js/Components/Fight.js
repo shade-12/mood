@@ -1,8 +1,14 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import confused from '../../images/confused.jpg';
 import '../../styles/fight.scss'
+
+import m1 from '../../images/monster1.png';
+import m2 from '../../images/monster2.png';
+import m3 from '../../images/monster3.png';
+import m4 from '../../images/monster4.png';
+import m5 from '../../images/monster5.png';
+import m6 from '../../images/monster6.png';
 
 class Fight extends React.Component{
 
@@ -24,8 +30,12 @@ class Fight extends React.Component{
                       "Do something for someone else and describe what you did and how it felt", 
                       "Go to bed on time and describe what time you fell asleep and how you felt in the morning"];
     const random = Math.ceil((Math.random()*messages.length)) - 1;
-    console.log(random);
     return messages[random];
+  }
+
+  randomMonster() {
+    const monsters = [m1, m2, m3, m4, m5, m6];
+
   }
 
   render() {
@@ -57,7 +67,7 @@ class Fight extends React.Component{
       <Form>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Complete the task to defeat the monster!</Form.Label>
-    <img className="thumbnail" src={confused} onClick={() => imageClick('confused')}/>
+    <img className="thumbnail" src={m2} onClick={() => imageClick('m2')}/>
     <div className="randomTask" > { this.randomTask() } </div>
     <Form.Control type="email"/>
   </Form.Group>
