@@ -65,7 +65,7 @@ class Fight extends React.Component{
     }
 
     return (
-      <Form>
+      <Form className="fight">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Complete the task to defeat the monster!</Form.Label>
           <img className="thumbnail" src={m2} onClick={() => imageClick('m2')}/>
