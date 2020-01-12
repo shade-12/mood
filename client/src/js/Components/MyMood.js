@@ -1,4 +1,3 @@
-
 import React from 'react';
 import angry from '../../images/angry.jpg';
 import confused from '../../images/confused.jpg';
@@ -23,14 +22,14 @@ class MyMood extends React.Component{
     if (theme.toLowerCase() === 'reset') { theme = null }
     this.setState({ theme });
   }
-  
+
   render() {
-  
+
     const imageClick = (mood) => {
       console.log(mood);
       this.setState({current_mood: mood});
-    } 
-  
+    }
+
 
     return (
         <div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -11,7 +12,8 @@ class LoginPage extends Component {
       username: '',
       password: '',
       area: {},
-      current_user: {}
+      current_user: {},
+      logged_in: false
     };
   }
 
@@ -45,8 +47,10 @@ class LoginPage extends Component {
 
     axios.post('/api/users', user)
          .then(response => {
-          console.log(response.data.user);
-          this.setState({current_user: user});
+          this.setState({
+            current_user: response.data.user,
+            logged_in: true
+          });
           })
          .catch(error => {
             console.log(error);
@@ -67,6 +71,9 @@ class LoginPage extends Component {
   }
 
   render() {
+    if(this.state.logged_in) {
+      return <Redirect to={`/users/${this.state.current_user.id}`} />
+    }
 
     return (
       <Form onSubmit={this.onSubmit}>
