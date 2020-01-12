@@ -3,6 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import '../../styles/fight.scss'
 
+import { Link } from 'react-router-dom';
+
 import m1 from '../../images/monster1.png';
 import m2 from '../../images/monster2.png';
 import m3 from '../../images/monster3.png';
@@ -65,17 +67,18 @@ class Fight extends React.Component{
     
     return (
       <Form>
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Complete the task to defeat the monster!</Form.Label>
-    <img className="thumbnail" src={m2} onClick={() => imageClick('m2')}/>
-    <div className="randomTask" > { this.randomTask() } </div>
-    <Form.Control type="email"/>
-  </Form.Group>
-
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Complete the task to defeat the monster!</Form.Label>
+          <img className="thumbnail" src={m2} onClick={() => imageClick('m2')}/>
+          <div className="randomTask" > { this.randomTask() } </div>
+          <Form.Control/>
+        </Form.Group>
+        <Link to='/mymood'>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Link>
+      </Form>
     );
   }
   

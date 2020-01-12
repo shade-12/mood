@@ -5,6 +5,7 @@ import LoginPage from './Components/LoginPage.js';
 import MyMood from './Components/MyMood.js';
 import ReactDOM from 'react-dom';
 import Fight from './Components/Fight.js';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 class App extends Component {
@@ -35,26 +36,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <NavBar/>
-        <div className="box-container">
-          <MyMood/>
-       </div>
-
-        {/* <div className="thumbnail-container">
-          <img className="thumbnail" src={angry} />
-          <img className="thumbnail" src={confused} />
-          <img className="thumbnail" src={crying} />
-          <img className="thumbnail" src={depressed} />
-          <img className="thumbnail" src={happy} />
-          <img className="thumbnail" src={impatient} />
-          <img className="thumbnail" src={naughty} />
-          <img className="thumbnail" src={sleepy} />
-          <img className="thumbnail" src={smile} />
-          <img className="thumbnail" src={terrified} />
-        </div> */}
-
-      </div>
+      <Router>
+        <div className="MyMood">
+          <NavBar />
+          <Switch>
+            <Route path="/fight" component={Fight} />
+            <Route path="/mymood" component={MyMood} />
+            <Route path="/login" component={LoginPage} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

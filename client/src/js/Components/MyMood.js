@@ -11,13 +11,9 @@ import '../../styles/mymood.scss';
 
 import {ButtonToolbar} from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
-import angry from '../../images/angry.jpg';
-import confused from '../../images/confused.jpg';
-import crying from '../../images/crying.jpg';
-import depressed  from '../../images/depressed.jpg';
-import happy from '../../images/happy.jpg';
-import sleepy from '../../images/sleepy.jpg';
 import Image from 'react-bootstrap/Image'
 import userIcon from '../../images/sword.jpg';
 import m1 from '../../images/monster1.png';
@@ -71,7 +67,9 @@ class MyMood extends React.Component{
 
         <Carousel>
           <Carousel.Item class = "carouselItem">
-            <img src = {m1}/>
+            <Link to='/fight'>
+              <img src = {m1}/>
+            </Link>
             <Carousel.Caption>
               <div class = "dino-text">
               <h3>Dino-ster</h3>
@@ -80,7 +78,9 @@ class MyMood extends React.Component{
           </Carousel.Item>
 
           <Carousel.Item class = "carouselItem">
-            <img src = {m2}/>
+            <Link to='/fight'>
+              <img src = {m2}/>
+            </Link>
             <Carousel.Caption>
               <div class = "dino-text">
               <h3>Fat-bean</h3>
@@ -89,7 +89,9 @@ class MyMood extends React.Component{
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src = {m3}/>
+            <Link to='/fight'>
+              <img src = {m3}/>
+            </Link>
             <Carousel.Caption>
               <div class = "dino-text">
                 <h3>Fluff-ball</h3>
@@ -98,7 +100,9 @@ class MyMood extends React.Component{
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src = {m4}/>
+            <Link to='/fight'>
+              <img src = {m4}/>
+            </Link>
             <Carousel.Caption>
               <div class = "dino-text">
                 <h3>Mad-alien</h3>
@@ -107,7 +111,9 @@ class MyMood extends React.Component{
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src = {m5}/>
+            <Link to='/fight'>
+              <img src = {m5}/>
+            </Link>
             <Carousel.Caption>
               <div class = "dino-text">
                 <h3>Stitch</h3>
@@ -116,7 +122,9 @@ class MyMood extends React.Component{
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src = {m6}/>
+            <Link to='/fight'>
+              <img src = {m6}/>
+            </Link>
             <Carousel.Caption>
               <div class = "dino-text">
                 <h3>Big-bird</h3>
@@ -133,12 +141,9 @@ class MyMood extends React.Component{
 
 function Menu() {
 
-  const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
 
-  const handle1Close = () => setShow1(false);
-  const handle1Show = () => setShow1(true);
   const handle2Close = () => setShow2(false);
   const handle2Show = () => setShow2(true);
   const handle3Close = () => setShow3(false);
@@ -152,29 +157,6 @@ function Menu() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1" onClick={handle1Show}>Create Monster</Dropdown.Item>
-            <Modal show={show1} onHide={handle1Close}>
-              <Modal.Header closeButton>
-                <Modal.Title>Add Monster</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <InputGroup className="mb-3">
-                  <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <FormControl
-                    placeholder="Username"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                </InputGroup>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handle1Close}>
-                  Close
-                </Button>
-              </Modal.Footer>
-            </Modal>
 
             <Dropdown.Item href="#/action-2" onClick={handle2Show}>Add Friend</Dropdown.Item>
             <Modal show={show2} onHide={handle2Close}>
