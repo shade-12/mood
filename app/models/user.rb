@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-  has_many :closefriends
   has_many :monsters
+  has_many :closefriends
 end

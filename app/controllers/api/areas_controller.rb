@@ -1,5 +1,4 @@
 class Api::AreasController < ApplicationController
-
   def create
     @location = Location.find_or_create_by(
       name: params[:name],

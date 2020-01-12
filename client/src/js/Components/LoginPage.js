@@ -10,7 +10,8 @@ class LoginPage extends Component {
     this.state = {
       username: '',
       password: '',
-      current_user: null
+      area: '',
+      current_user: {}
     };
   }
 
@@ -19,13 +20,38 @@ class LoginPage extends Component {
       name: this.state.username,
       password: this.state.password
     }
-    axios.post('/api/users', user).then(response => {
-      let user = response.data.user;
-      this.setState({current_user: user});
-      console.log(user);
-    });
+
+
+
+    axios.get('https://ipapi.co/json/')
+         .then(response => {
+            let data = response.data;
+            let area = {
+              name: data.city,
+              latitude: data.latitude,
+              longitude: data.longitude,
+              image: ''
+            };
+            axios.get('/api/areas', area).then(response => {
+              this.setState({area: response.})
+            })
+          .catch(error => {
+            console.log(error);
+          });
+
+    axios.post('/api/users', user)
+         .then(response => {
+            let user = response.data.user;
+            this.setState({current_user: user});
+            console.log(user);
+          })
+         .catch(error => {
+            console.log(error);
+          });
 
   }
+
+
 
   onChange = e => {
     const target = e.target;
@@ -40,6 +66,8 @@ class LoginPage extends Component {
 
   render() {
 
+    const user = this.state.current_user !== null ? this.state.current_user : '';
+
     return (
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="formBasicEmail">
@@ -52,7 +80,6 @@ class LoginPage extends Component {
         <Button variant="primary" type="submit">
           Submit
         </Button>
-        {this.state.current_user}
       </Form>
     );
   }

@@ -10,9 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_01_12_014117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "closefriends", force: :cascade do |t|
+    t.integer "user_id_1"
+    t.integer "user_id_2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "monsters", force: :cascade do |t|
+    t.bigint "area_id"
+    t.bigint "user_id"
+    t.string "name"
+    t.string "task"
+    t.integer "image_id"
+    t.boolean "done"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_monsters_on_area_id"
+    t.index ["user_id"], name: "index_monsters_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.bigint "area_id"
+    t.string "name"
+    t.string "password"
+    t.integer "no_of_hearts"
+    t.integer "joy_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_users_on_area_id"
+  end
+
+  add_foreign_key "monsters", "areas"
+  add_foreign_key "monsters", "users"
+  add_foreign_key "users", "areas"
 end
