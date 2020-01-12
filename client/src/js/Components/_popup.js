@@ -2,6 +2,8 @@ import React, { useState, Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
 class PopUp extends Component {
@@ -20,6 +22,10 @@ class PopUp extends Component {
   handle2Show = () => {this.setState({show2: true})};
   handle3Close = () => {this.setState({show3: false})};
   handle3Show = () => {this.setState({show3: true})};
+
+  addFriend = () => {
+    axios.post('')
+  }
 
   render() {
 
@@ -42,9 +48,18 @@ class PopUp extends Component {
               {closefriends}
             </ListGroup>
           </Modal.Body>
+          <InputGroup size="sm" className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-sm">Add a close friend</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+          </InputGroup>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handle1Close}>
               Close
+            </Button>
+            <Button variant="primary" onClick={this.addFriends}>
+              Add Friend
             </Button>
           </Modal.Footer>
         </Modal>
