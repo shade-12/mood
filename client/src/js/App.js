@@ -25,15 +25,37 @@ class App extends Component {
 
   fetchData = () => {
     axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+      .then((response) => {
+        // handle success
+        console.log(response.data) // The entire response from the Rails API
 
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
-      });
-    })
+        console.log(response.data.message) // Just the message
+        this.setState({
+          message: response.data.message
+        });
+      })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    
+    fetch('/api/form-submit-url', {
+      method: 'POST',
+      body: data,
+    });
+  }
+
+  submitMood(event) {
+    let mood = event.target.value;
+    alert(mood);
+    //this.setState({demo: event.target.value});
+    // event.preventDefault();
+    // const data = new FormData(event.target);
+    // let mood = data.get('mood');
+    // alert(mood);
+    //let mood = document.getElementById("mood").value;
+    //document.getElementById("demo").innerHTML = "hi";
   }
 
   render() {
