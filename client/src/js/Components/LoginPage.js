@@ -1,54 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
-class LoginPage extends React.Component{
+class LoginPage extends Component {
 
-  state = { theme: null }
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      current_user: null
+    };
+  }
 
-  chooseTheme = (theme, evt) => {
-    evt.preventDefault();
-    if (theme.toLowerCase() === 'reset') { theme = null }
-    this.setState({ theme });
+  onSubmit = response => {
+    let user = {
+      name: this.state.username,
+      password: this.state.password
+    }
+    axios.post('/api/users', user).then(response => {
+      let user = response.data.user;
+      this.setState({current_user: user});
+      console.log(user);
+    });
+
+  }
+
+  onChange = e => {
+    const target = e.target;
+
+    if (target.type === 'text') {
+      this.setState({ username: target.value });
+    }
+    if (target.type === 'password') {
+      this.setState({ password: target.value });
+    }
   }
 
   render() {
 
-    const { theme } = this.state;
-    const themeClass = theme ? theme.toLowerCase() : 'default';
-
-    const parentContainerStyles = {
-      position: 'absolute',
-      height: '100%',
-      width: '100%',
-      display: 'table'
-    };
-
-    const subContainerStyles = {
-      position: 'relative',
-      height: '100%',
-      width: '100%',
-      display: 'table-cell',
-      verticalAlign: 'middle'
-    };
-
     return (
-      <Form>
+      <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else!!
-          </Form.Text>
+          <Form.Control type="text" placeholder="Username" onChange={this.onChange}/>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control type="password" placeholder="Password" onChange={this.onChange}/>
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
         </Button>
+        {this.state.current_user}
       </Form>
     );
   }
