@@ -78,9 +78,6 @@ class PopUp extends Component {
             <Button variant="secondary" onClick={this.handle1Close}>
               Close
             </Button>
-            <Button variant="primary" type="submit">
-              Add Friend
-            </Button>
           </Modal.Footer>
         </Modal>
 
