@@ -1,28 +1,28 @@
 class Api::AreasController < ApplicationController
   def create
-    @location = Location.find_or_create_by(
+    @area = Area.find_or_create_by(
       name: params[:name],
       latitude: params[:latitude],
       longitude: params[:longitude],
       image: params[:image]
     )
-    if @location.save
+    if @area.save
       render :json => {
-        location: @location
+        area: @area
       }
     end
   end
 
   def show
-    @location = Location.find params[:id]
+    @area = Area.find params[:id]
     render :json => {
-      location: @location
+      area: @area
     }
   end
 
   def update
-    @location = Location.find params[:id]
-    @location.destroy
+    @area = Area.find params[:id]
+    @area.destroy
   end
 
 end

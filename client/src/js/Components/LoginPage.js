@@ -10,45 +10,47 @@ class LoginPage extends Component {
     this.state = {
       username: '',
       password: '',
-      area: '',
+      area: {},
       current_user: {}
     };
   }
 
-  onSubmit = response => {
-    let user = {
-      name: this.state.username,
-      password: this.state.password
-    }
+  async componentDidMount() {
+    await this.getArea();
+  }
 
-
-
-    axios.get('https://ipapi.co/json/')
-         .then(response => {
-            let data = response.data;
-            let area = {
-              name: data.city,
-              latitude: data.latitude,
-              longitude: data.longitude,
+  getArea = async () => {
+    await axios.get('https://ipapi.co/json/').then(response => {
+      let area = {
+              name: response.data.city,
+              latitude: response.data.latitude,
+              longitude: response.data.longitude,
               image: ''
             };
-            axios.get('/api/areas', area).then(response => {
-              this.setState({area: response.})
-            })
-          .catch(error => {
-            console.log(error);
-          });
+      axios.post('/api/areas', area).then(response => {
+        this.setState({area: response.data.area });
+        console.log(this.state.area);
+      });
+
+    });
+  }
+
+  onSubmit = response => {
+
+    let user = {
+                name: this.state.username,
+                password: this.state.password,
+                area_id: this.state.area.id
+              };
 
     axios.post('/api/users', user)
          .then(response => {
-            let user = response.data.user;
-            this.setState({current_user: user});
-            console.log(user);
+          console.log(response.data.user);
+          this.setState({current_user: user});
           })
          .catch(error => {
             console.log(error);
           });
-
   }
 
 
@@ -65,8 +67,6 @@ class LoginPage extends Component {
   }
 
   render() {
-
-    const user = this.state.current_user !== null ? this.state.current_user : '';
 
     return (
       <Form onSubmit={this.onSubmit}>
