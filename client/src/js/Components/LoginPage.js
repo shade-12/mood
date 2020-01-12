@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Cookies from 'universal-cookie';
+import Cookies from 'js-cookie';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -10,12 +10,11 @@ class LoginPage extends Component {
 
   constructor(props) {
     super(props);
-    const cookies = new Cookies();
     this.state = {
       username: '',
       password: '',
       area: {},
-      current_user: cookies.get('mood_user'),
+      current_user: {},
       logged_in: false
     };
   }
@@ -40,27 +39,29 @@ class LoginPage extends Component {
     });
   }
 
-  onSubmit = response => {
+  onSubmit = e => {
+    e.preventDefault();
     let user = {
       name: this.state.username,
       password: this.state.password,
       area_id: this.state.area.id
     };
 
+    const {cookies} = this.props;
+
     axios.post('/api/users', user)
          .then(response => {
+          console.log(response.data.user.id);
+            cookies.set('mood_user', response.data.user.id, { path: '/' });
+            this.props.updateCurrentUser(response.data.user);
             this.setState({
-              current_user: response.data.user,
-              logged_in: true
+              current_user: response.data.user
             });
-            cookies.set('mood_user', response.data.user.id, { path: '/', expires: 0 });
-          })
+          }).then(response => this.setState({logged_in: true}))
          .catch(error => {
             console.log(error);
           });
   }
-
-
 
   onChange = e => {
     const target = e.target;
@@ -74,8 +75,8 @@ class LoginPage extends Component {
   }
 
   render() {
-    if(this.state.logged_in) {
-      return <Redirect to={`/users/${this.state.current_user.id}`} />
+    if(this.state.logged_in === true) {
+      return <Redirect to="/mood" />
     }
 
     return (
