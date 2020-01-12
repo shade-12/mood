@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import NavBar from './Components/_navbar.js';
 import LoginPage from './Components/LoginPage.js';
-import MyMood from './Components/MyMood.js';
+import UserPage from './Components/UserPage.js';
 
 class App extends Component {
   constructor(props) {
@@ -24,11 +24,11 @@ class App extends Component {
 
   render() {
     let login = null;
-    if(this.state.user !== ''){
-      login = <Route render={() => <Redirect to={`/users/${this.state.user.id}`} />} />;
-    }else{
-      login = <Route render={() => <Redirect to="/" />} />;
-    }
+    // if(this.state.user !== ''){
+    //   login = <Route render={() => <Redirect to={`/users/${this.state.user.id}`} />} />;
+    // }else{
+    //   login = <Route render={() => <Redirect to="/" />} />;
+    // }
 
     return (
       <Router>
@@ -39,7 +39,7 @@ class App extends Component {
             />
             <Route
               exact path="/mood"
-              render={() => <MyMood user={this.state.user} />}
+              render={() => <UserPage user={this.state.user} />}
             />
             {/*<Route
               exact path="/users/:id"

@@ -1,6 +1,16 @@
-b {
-  h1 {
-    color: $neon-blue;
+.navbar {
+  display: flex;
+  flex_direction: row;
+  justify-content: space-between;
+  align-content: space-between;
+  padding-bottom: 0px;
+
+  b {
+    margin-right: 2.94rem;
+    color: $dark-purple;
+
+    h1 {
+      color: $dark-purple;
+    }
   }
 }
-
