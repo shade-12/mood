@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     let login = null;
     if(this.props.cookies.get('mood_user')){
-      login = <Route render={() => <Redirect to={`/users/${this.props.cookies.get('mood_user').id}`} />} />;
+      login = <Route render={() => <Redirect to="/mood" />} />;
     }else{
       login = <Route render={() => <Redirect to="/" />} />;
     }
