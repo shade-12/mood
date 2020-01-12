@@ -15,25 +15,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     const { cookies } = props;
-    this.state = {
-      current_user: {}
-    }
-  }
-
-  componentDidUpdate(prevState) {
-    if (this.state != prevState) {
-      console.log(this.state);
-    }
-  }
-
-  updateCurrentUser = async user => {
-    await this.setState({ user: user });
   }
 
   render() {
     let login = null;
-    if(this.state.current_user !== {}){
-      login = <Route render={() => <Redirect to={`/users/${this.state.current_user.id}`} />} />;
+    if(this.props.cookies.get('mood_user')){
+      login = <Route render={() => <Redirect to={`/users/${this.props.cookies.get('mood_user').id}`} />} />;
     }else{
       login = <Route render={() => <Redirect to="/" />} />;
     }
@@ -44,16 +31,16 @@ class App extends Component {
           <Switch>
             <Route
               exact path="/"
-              render={() => <LoginPage cookies={this.props.cookies} updateCurrentUser={this.updateCurrentUser}/>}
+              render={() => <LoginPage cookies={this.props.cookies} />}
             />
             <Route
               exact path="/mood"
               render={() => <UserPage cookies={this.props.cookies} />}
             />
-            {/*<Route
+            {<Route
               exact path="/users/:id"
               render={() => <UserPage cookies={this.props.cookies}/>}
-            />*/}
+            />}
             {login}
           </Switch>
         </div>

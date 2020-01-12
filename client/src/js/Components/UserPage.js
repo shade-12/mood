@@ -21,13 +21,23 @@ class UserPage extends React.Component{
 
   constructor(props) {
     super(props);
+    this.state = {
+      current_user: {}
+    }
+  }
+
+  async componentDidMount() {
+    let user_id = this.props.cookies.get('mood_user');
+    await axios.get(`/api/users/${user_id}`).then(response => {
+      this.setState({current_user: response.data.user});
+    })
   }
 
   render() {
 
     return (
         <div>
-          <NavBar />
+          <NavBar name={this.state.current_user.name}/>
 
           <div className="user-container">
             <section className="user-card">

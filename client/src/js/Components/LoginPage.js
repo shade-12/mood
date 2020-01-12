@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -51,9 +50,7 @@ class LoginPage extends Component {
 
     axios.post('/api/users', user)
          .then(response => {
-          console.log(response.data.user.id);
             cookies.set('mood_user', response.data.user.id, { path: '/' });
-            this.props.updateCurrentUser(response.data.user);
             this.setState({
               current_user: response.data.user
             });
