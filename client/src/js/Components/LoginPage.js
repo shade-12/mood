@@ -76,21 +76,21 @@ class LoginPage extends Component {
     }
 
     return (
-      <>
-      <h2>Login :|</h2>
-      <Form onSubmit={this.onSubmit}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Control type="text" placeholder="Username" onChange={this.onChange}/>
-        </Form.Group>
+      <div className="login">
+        <h2>Welcome to M∞d :|</h2>
+        <Form onSubmit={this.onSubmit}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Control type="text" placeholder="Username" onChange={this.onChange}/>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Control type="password" placeholder="Password" onChange={this.onChange}/>
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-      </>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Control type="password" placeholder="Password" onChange={this.onChange}/>
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Get in!
+          </Button>
+        </Form>
+      </div>
     );
   }
 
