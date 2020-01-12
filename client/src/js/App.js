@@ -6,6 +6,7 @@ import axios from 'axios';
 import NavBar from './Components/_navbar.js';
 import LoginPage from './Components/LoginPage.js';
 import UserPage from './Components/UserPage.js';
+import Fight from './Components/Fight.js';
 
 class App extends Component {
   static propTypes = {
@@ -39,7 +40,7 @@ class App extends Component {
             />
             {<Route
               exact path="/users/:id"
-              render={() => <UserPage cookies={this.props.cookies}/>}
+              render={() => <Fight cookies={this.props.cookies}/>}
             />}
             {login}
           </Switch>
@@ -50,3 +51,4 @@ class App extends Component {
 }
 
 export default withCookies(App);
+

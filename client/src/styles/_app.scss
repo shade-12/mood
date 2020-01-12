@@ -69,12 +69,14 @@ div.thumbnail-container {
 }
 
 #dots {
-  width: 30px;
+  width: auto;
   height: 40px;
-  background-image: radial-gradient(circle at center, black 1.5px, transparent 1px);
+  background-image: radial-gradient(circle at center, #6AAFB2 1.5px, transparent 0px);
   background-size: 20px 12px;
   background-color: $background-color;
   margin-right: 30px;
+  margin-top: -100px;
+  border: none;
 }
 
 #dotsdiv{
@@ -93,6 +95,7 @@ div.thumbnail-container {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 50px;
 
 }
 .carousel-caption{
